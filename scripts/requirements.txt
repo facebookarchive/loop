@@ -1,0 +1,5 @@
+visdom
+numpy
+tqdm
+scipy
+nltk

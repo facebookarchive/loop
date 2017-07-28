@@ -1,0 +1,10 @@
+*.pyc
+*.pth
+*.tar.gz
+*.egg-info
+models/**
+data/**
+tools/**
+checkpoints/**
+notebooks/.ipynb_checkpoints/**
+.ipynb_checkpoints/**
