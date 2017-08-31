@@ -4,10 +4,10 @@ PyTorch implementation of the method described in the [Voice Synthesis for in-th
 <p align="center"><img width="70%" src="img/method.png" /></p>
 
 VoiceLoop is a neural text-to-speech (TTS) that is able to transform text to speech in voices that are sampled
-in the wild. Some demo samples can be [found here](https://ytaigman.github.io/loop/).
+in the wild. Some demo samples can be [found here](https://ytaigman.github.io/loop/site/).
 
 ## Quick Links
-- [Demo Samples](https://ytaigman.github.io/loop/)
+- [Demo Samples](https://ytaigman.github.io/loop/site/)
 - [Quick Start](#quick-start)
 - [Setup](#setup)
 - [Training](#training)
