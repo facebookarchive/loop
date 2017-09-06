@@ -32,6 +32,8 @@ parser.add_argument('--checkpoint', default='',
                     metavar='C', type=str, help='Checkpoint path')
 parser.add_argument('--gpu', default=0,
                     metavar='G', type=int, help='GPU device ID')
+parser.add_argument('--visualize', action='store_true',
+                    help='Visualize train and validation loss.')
 # Data options
 parser.add_argument('--seq-len', type=int, default=100,
                     help='Sequence length for tbptt')
@@ -134,10 +136,11 @@ def train(model, criterion, optimizer, epoch, train_losses):
 
     avg = total / len(train_loader)
     train_losses.append(avg)
-    vis.line(Y=np.asarray(train_losses),
-             X=torch.arange(1, 1 + len(train_losses)),
-             opts=dict(title="Train"),
-             win='Train loss ' + args.expName)
+    if args.visualize:
+        vis.line(Y=np.asarray(train_losses),
+                 X=torch.arange(1, 1 + len(train_losses)),
+                 opts=dict(title="Train"),
+                 win='Train loss ' + args.expName)
 
     logging.info('====> Train set loss: {:.4f}'.format(avg))
 
@@ -161,10 +164,11 @@ def evaluate(model, criterion, epoch, eval_losses):
 
     avg = total / len(valid_loader)
     eval_losses.append(avg)
-    vis.line(Y=np.asarray(eval_losses),
-             X=torch.arange(1, 1 + len(eval_losses)),
-             opts=dict(title="Eval"),
-             win='Eval loss ' + args.expName)
+    if args.visualize:
+        vis.line(Y=np.asarray(eval_losses),
+                 X=torch.arange(1, 1 + len(eval_losses)),
+                 opts=dict(title="Eval"),
+                 win='Eval loss ' + args.expName)
 
     logging.info('====> Test set loss: {:.4f}'.format(avg))
     return avg
