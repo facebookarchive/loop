@@ -7,7 +7,7 @@ VoiceLoop is a neural text-to-speech (TTS) that is able to transform text to spe
 in the wild. Some demo samples can be [found here](https://ytaigman.github.io/loop/site/).
 
 ## Quick Links
-- [Demo Samples](https://ytaigman.github.io/loop/site/)
+- [Demo Samples](https://ytaigman.github.io/loop/site/) (**Updated 10/25/2017**)
 - [Quick Start](#quick-start)
 - [Setup](#setup)
 - [Training](#training)
@@ -89,6 +89,7 @@ loop
     └── vctk_alt
 ```
 
+**Update 10/25/2017:** Single speaker model coming soon
 
 ### SPTK and WORLD
 Finally, speech generation requires [SPTK3.9](http://sp-tk.sourceforge.net/) and [WORLD](http://ml.cs.yamanashi.ac.jp/world/english/) vocoder as done in Merlin. To download the executables: 
