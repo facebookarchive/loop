@@ -1,5 +1,5 @@
 # VoiceLoop
-PyTorch implementation of the method described in the [Voice Synthesis for in-the-Wild Speakers via a Phonological Loop](https://arxiv.org/abs/1707.06588).
+PyTorch implementation of the method described in the paper [VoiceLoop: Voice Fitting and Synthesis via a Phonological Loop](https://arxiv.org).
 
 <p align="center"><img width="70%" src="img/method.png" /></p>
 
@@ -7,7 +7,7 @@ VoiceLoop is a neural text-to-speech (TTS) that is able to transform text to spe
 in the wild. Some demo samples can be [found here](https://ytaigman.github.io/loop/site/).
 
 ## Quick Links
-- [Demo Samples](https://ytaigman.github.io/loop/site/) (**Updated 10/25/2017**)
+- [Demo Samples](https://ytaigman.github.io/loop/site/) 
 - [Quick Start](#quick-start)
 - [Setup](#setup)
 - [Training](#training)
