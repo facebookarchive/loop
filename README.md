@@ -1,5 +1,5 @@
 # VoiceLoop
-PyTorch implementation of the method described in the paper [VoiceLoop: Voice Fitting and Synthesis via a Phonological Loop](https://arxiv.org).
+PyTorch implementation of the method described in the paper [VoiceLoop: Voice Fitting and Synthesis via a Phonological Loop](https://arxiv.org/abs/1707.06588).
 
 <p align="center"><img width="70%" src="img/method.png" /></p>
 
