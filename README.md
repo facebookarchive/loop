@@ -1,5 +1,5 @@
 # VoiceLoop
-PyTorch implementation of the method described in the [Voice Synthesis for in-the-Wild Speakers via a Phonological Loop](https://arxiv.org/abs/1707.06588).
+PyTorch implementation of the method described in the paper [VoiceLoop: Voice Fitting and Synthesis via a Phonological Loop](https://arxiv.org/abs/1707.06588).
 
 <p align="center"><img width="70%" src="img/method.png" /></p>
 
@@ -7,7 +7,7 @@ VoiceLoop is a neural text-to-speech (TTS) that is able to transform text to spe
 in the wild. Some demo samples can be [found here](https://ytaigman.github.io/loop/site/).
 
 ## Quick Links
-- [Demo Samples](https://ytaigman.github.io/loop/site/)
+- [Demo Samples](https://ytaigman.github.io/loop/site/) 
 - [Quick Start](#quick-start)
 - [Setup](#setup)
 - [Training](#training)
@@ -89,6 +89,7 @@ loop
     └── vctk_alt
 ```
 
+**Update 10/25/2017:** Single speaker model coming soon
 
 ### SPTK and WORLD
 Finally, speech generation requires [SPTK3.9](http://sp-tk.sourceforge.net/) and [WORLD](http://ml.cs.yamanashi.ac.jp/world/english/) vocoder as done in Merlin. To download the executables: 
@@ -120,7 +121,7 @@ If you find this code useful in your research then please cite:
 
 ```
 @article{taigman2017voice,
-  title           = {Voice Synthesis for in-the-Wild Speakers via a Phonological Loop},
+  title           = {VoiceLoop: Voice Fitting and Synthesis via a Phonological Loop},
   author          = {Taigman, Yaniv and Wolf, Lior and Polyak, Adam and Nachmani, Eliya},
   journal         = {ArXiv e-prints},
   archivePrefix   = "arXiv",
@@ -128,7 +129,7 @@ If you find this code useful in your research then please cite:
   eprint          = {1705.03122},
   primaryClass    = "cs.CL",
   year            = {2017}
-  month           = July,
+  month           = October,
 }
 ```
 
