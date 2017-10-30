@@ -5,11 +5,9 @@
 # LICENSE file in the root directory of this source tree.
 
 import os
-import nltk
 import argparse
-import random
 import numpy as np
-from string import digits
+import phonemizer
 
 import torch
 from torch.autograd import Variable
@@ -40,21 +38,21 @@ if args.gpu >= 0:
 
 
 def text2phone(text, char2code):
-    cmudict = nltk.corpus.cmudict.dict()
+    seperator = phonemizer.separator.Separator('', '', ' ')
+    ph = phonemizer.phonemize(text, separator=seperator)
+    ph = ph.split(' ')
+    ph.remove('')
 
-    result = []
-    for word in text.split():
-        result += random.choice(cmudict[word])
-    result = [str(ph.lower()).translate(None, digits) for ph in result]
-    result = [char2code[ph] for ph in result]
-
+    result = [char2code[p] for p in ph]
     return torch.LongTensor(result)
 
 
 def trim_pred(out, attn):
     tq = attn.abs().sum(1).data
-    for stopi in range(tq.size(0) - 1, -1, -1):
-        if tq[stopi][0] > 0.5:
+
+    for stopi in range(1, tq.size(0)):
+        col_sum = attn[:stopi, :].abs().sum(0).data.squeeze()
+        if tq[stopi][0] < 0.5 and col_sum[-1] > 4:
             break
 
     out = out[:stopi, :]
@@ -110,7 +108,7 @@ def main():
         output_fname = fname + '.gen_' + str(args.spkr)
     elif args.text is not '':
         txt = text2phone(args.text, char2code)
-        feat = torch.FloatTensor(500, 63)
+        feat = torch.FloatTensor(txt.size(0)*20, 63)
         spkr = torch.LongTensor([args.spkr])
 
         txt = Variable(txt.unsqueeze(1), volatile=True)
