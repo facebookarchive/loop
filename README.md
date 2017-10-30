@@ -121,7 +121,7 @@ If you find this code useful in your research then please cite:
 
 ```
 @article{taigman2017voice,
-  title           = {Voice Synthesis for in-the-Wild Speakers via a Phonological Loop},
+  title           = {VoiceLoop: Voice Fitting and Synthesis via a Phonological Loop},
   author          = {Taigman, Yaniv and Wolf, Lior and Polyak, Adam and Nachmani, Eliya},
   journal         = {ArXiv e-prints},
   archivePrefix   = "arXiv",
@@ -129,7 +129,7 @@ If you find this code useful in your research then please cite:
   eprint          = {1705.03122},
   primaryClass    = "cs.CL",
   year            = {2017}
-  month           = July,
+  month           = October,
 }
 ```
 
