@@ -39,7 +39,8 @@ python generate.py  --text "hello world" --spkr 1 --checkpoint models/vctk/bestm
 ```
 
 ## Setup
-Requirements: Linux/OSX, Python2.7 and [PyTorch 0.1.12](http://pytorch.org/). The current version of the code requires CUDA support for training. Generation can be done on the CPU.
+Requirements: Linux/OSX, Python2.7 and [PyTorch 0.1.12](http://pytorch.org/). Generation requires installing [phonemizer](https://github.com/bootphon/phonemizer), follow the setup instructions there. 
+The current version of the code requires CUDA support for training. Generation can be done on the CPU.
 
 ```bash
 git clone https://github.com/facebookresearch/loop.git
@@ -83,6 +84,7 @@ After downloading, the models will be located under subfolder ```models``` as fo
 loop
 ├── data
 ├── models
+    ├── blizzard
     ├── vctk
     │   ├── args.pth
     │   └── bestmodel.pth
