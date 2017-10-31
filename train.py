@@ -78,7 +78,7 @@ vis = visdom.Visdom(env=args.expName)
 
 # data
 logging.info("Building dataset.")
-train_dataset = NpzFolder(args.data + '/numpy_features')
+train_dataset = NpzFolder(args.data + '/numpy_features', args.nspk == 1)
 train_loader = NpzLoader(train_dataset,
                          max_seq_len=args.max_seq_len,
                          batch_size=args.batch_size,
@@ -86,7 +86,7 @@ train_loader = NpzLoader(train_dataset,
                          pin_memory=True,
                          shuffle=True)
 
-valid_dataset = NpzFolder(args.data + '/numpy_features_valid')
+valid_dataset = NpzFolder(args.data + '/numpy_features_valid', args.nspk == 1)
 valid_loader = NpzLoader(valid_dataset,
                          max_seq_len=args.max_seq_len,
                          batch_size=args.batch_size,

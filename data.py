@@ -5,6 +5,7 @@
 # LICENSE file in the root directory of this source tree.
 
 from functools import partial
+from collections import defaultdict
 import numpy as np
 import os
 
@@ -73,7 +74,7 @@ def collate_by_input_length(batch, max_seq_len):
 class NpzFolder(data.Dataset):
     NPZ_EXTENSION = 'npz'
 
-    def __init__(self, root):
+    def __init__(self, root, single_spkr=False):
         self.root = root
         self.npzs = self.make_dataset(self.root)
 
@@ -82,12 +83,15 @@ class NpzFolder(data.Dataset):
                                "Supported image extensions are: " +
                                self.NPZ_EXTENSION))
 
-        self.speakers = []
-        for fname in self.npzs:
-            self.speakers += [os.path.basename(fname).split('_')[0]]
-        self.speakers = list(set(self.speakers))
-        self.speakers.sort()
-        self.speakers = {v: i for i, v in enumerate(self.speakers)}
+        if single_spkr:
+            self.speakers = defaultdict(lambda: 0)
+        else:
+            self.speakers = []
+            for fname in self.npzs:
+                self.speakers += [os.path.basename(fname).split('_')[0]]
+            self.speakers = list(set(self.speakers))
+            self.speakers.sort()
+            self.speakers = {v: i for i, v in enumerate(self.speakers)}
 
         code2phone = np.load(self.npzs[0])['code2phone']
         self.dict = {v: k for k, v in enumerate(code2phone)}
