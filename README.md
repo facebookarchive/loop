@@ -91,7 +91,7 @@ loop
     └── vctk_alt
 ```
 
-**Update 10/25/2017:** Single speaker model coming soon
+**Update 10/25/2017:** Single speaker model available in models/blizzard/
 
 ### SPTK and WORLD
 Finally, speech generation requires [SPTK3.9](http://sp-tk.sourceforge.net/) and [WORLD](http://ml.cs.yamanashi.ac.jp/world/english/) vocoder as done in Merlin. To download the executables: 
