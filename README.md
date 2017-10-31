@@ -113,11 +113,11 @@ loop
 ### Single-Speaker
 Single speaker model is trained on [blizzard 2011](http://www.cstr.ed.ac.uk/projects/blizzard/2011/lessac_blizzard2011/). Data should be downloaded and prepared as described above. Once the data is ready, run:
 ```bash
-python train.py --noise 1 --expName blizzard_init --seq-len 1600 --max-seq-len 1600 --data data/blizzard --nspk 1 --lr 1e-5 --checkpoint checkpoints/test_blizzard/bestmodel.pth --epochs 10
+python train.py --noise 1 --expName blizzard_init --seq-len 1600 --max-seq-len 1600 --data data/blizzard --nspk 1 --lr 1e-5 --epochs 10
 ```
 Then, continue training the model with :
 ```bash
-python train.py --noise 1 --expName blizzard --seq-len 1600 --max-seq-len 1600 --data data/blizzard --nspk 1 --lr 1e-4 --checkpoint checkpoints/blizzard_init/bestmodel.pt --epochs 90
+python train.py --noise 1 --expName blizzard --seq-len 1600 --max-seq-len 1600 --data data/blizzard --nspk 1 --lr 1e-4 --checkpoint checkpoints/blizzard_init/bestmodel.pth --epochs 90
 ```
 ### Multi-Speaker
 Training a new model on vctk, first train the model using noise level of 4 and input sequence length of 100:
