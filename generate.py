@@ -8,6 +8,7 @@ import os
 import argparse
 import numpy as np
 import phonemizer
+import string
 
 import torch
 from torch.autograd import Variable
@@ -115,7 +116,11 @@ def main():
         feat = Variable(feat.unsqueeze(1), volatile=True)
         spkr = Variable(spkr, volatile=True)
 
+        # slugify input string to file name
         fname = args.text.replace(' ', '_')
+        valid_chars = "-_.() %s%s" % (string.ascii_letters, string.digits)
+        fname = ''.join(c for c in fname if c in valid_chars)
+
         output_fname = fname + '.gen_' + str(args.spkr)
     else:
         print('ERROR: Must supply npz file path or text as source.')
