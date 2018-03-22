@@ -81,8 +81,14 @@ def main():
     train_args = opt[0]
 
     train_dataset = NpzFolder(train_args.data + '/numpy_features')
-    char2code = train_dataset.dict
-    spkr2code = train_dataset.speakers
+    char2code = {'aa': 0, 'ae': 1, 'ah': 2, 'ao': 3, 'aw': 4, 'ax': 5,  'ay': 6,
+                 'b': 7, 'ch': 8, 'd': 9, 'dh': 10, 'eh': 11, 'er': 12, 'ey': 13,
+                 'f': 14, 'g': 15, 'hh': 16, 'i': 17, 'ih': 18, 'iy': 19, 'jh': 20,
+                 'k': 21, 'l': 22, 'm': 23, 'n': 24, 'ng': 25, 'ow': 26, 'oy': 27,
+                 'p': 28, 'pau': 29, 'r': 30, 's': 31, 'sh': 32, 'ssil': 33,
+                 't': 34, 'th': 35, 'uh': 36, 'uw': 37, 'v': 38, 'w': 39, 'y': 40,
+                 'z': 41}
+    nspkr = train_args.nspk
 
     norm_path = train_args.data + '/norm_info/norm.dat'
     train_args.noise = 0
@@ -93,7 +99,7 @@ def main():
         model.cuda()
     model.eval()
 
-    if args.spkr not in range(len(spkr2code)):
+    if args.spkr not in range(nspkr):
         print('ERROR: Unknown speaker id: %d.' % args.spkr)
         return
 
