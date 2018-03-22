@@ -80,7 +80,6 @@ def main():
     opt = torch.load(os.path.dirname(args.checkpoint) + '/args.pth')
     train_args = opt[0]
 
-    train_dataset = NpzFolder(train_args.data + '/numpy_features')
     char2code = {'aa': 0, 'ae': 1, 'ah': 2, 'ao': 3, 'aw': 4, 'ax': 5,  'ay': 6,
                  'b': 7, 'ch': 8, 'd': 9, 'dh': 10, 'eh': 11, 'er': 12, 'ey': 13,
                  'f': 14, 'g': 15, 'hh': 16, 'i': 17, 'ih': 18, 'iy': 19, 'jh': 20,
@@ -91,6 +90,10 @@ def main():
     nspkr = train_args.nspk
 
     norm_path = train_args.data + '/norm_info/norm.dat'
+    if not os.path.exists(norm_path):
+        norm_path = os.path.dirname(args.checkpoint) + '/norm.dat'
+    else:
+        print('ERROR: Failed to find norm file.')
     train_args.noise = 0
 
     model = Loop(train_args)
