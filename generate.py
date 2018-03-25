@@ -89,11 +89,14 @@ def main():
                  'z': 41}
     nspkr = train_args.nspk
 
-    norm_path = train_args.data + '/norm_info/norm.dat'
-    if not os.path.exists(norm_path):
+    norm_path = None
+    if os.path.exists(train_args.data + '/norm_info/norm.dat'):
+        norm_path = train_args.data + '/norm_info/norm.dat'
+    elif os.path.exists(os.path.dirname(args.checkpoint) + '/norm.dat'):
         norm_path = os.path.dirname(args.checkpoint) + '/norm.dat'
     else:
         print('ERROR: Failed to find norm file.')
+        return
     train_args.noise = 0
 
     model = Loop(train_args)
