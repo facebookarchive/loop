@@ -25,8 +25,7 @@ class MaskedMSE(nn.Module):
     # Taken from
     # https://github.com/spro/practical-pytorch/blob/master/seq2seq-translation
     @staticmethod
-    def _sequence_mask(sequence_length):
-        max_len = sequence_length.data.max()
+    def _sequence_mask(sequence_length, max_len):
         batch_size = sequence_length.size(0)
         seq_range = torch.arange(0, max_len).long()
         seq_range_expand = seq_range.unsqueeze(0).expand(batch_size, max_len)
@@ -38,7 +37,8 @@ class MaskedMSE(nn.Module):
         return (seq_range_expand < seq_length_expand).t().float()
 
     def forward(self, input, target, lengths):
-        mask = self._sequence_mask(lengths).unsqueeze(2)
+        max_len = input.size(0)
+        mask = self._sequence_mask(lengths, max_len).unsqueeze(2)
         mask_ = mask.expand_as(input)
         self.loss = self.criterion(input*mask_, target*mask_)
         self.loss = self.loss / mask.sum()
