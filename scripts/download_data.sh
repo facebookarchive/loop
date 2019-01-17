@@ -6,6 +6,6 @@
 
 mkdir data
 pushd data
-wget https://s3.amazonaws.com/fair-data/loop/vctk_data.zip
+wget https://dl.fbaipublicfiles.com/loop/vctk_data.zip
 unzip vctk_data.zip
 rm vctk_data.zip
